@@ -15,13 +15,48 @@
 			</p>
 			<p>
 				<label for="loginPassword">Mot de passe</label>
-				<input id="loginPassword" name="loginPassword" type="text" required>
+				<input id="loginPassword" name="loginPassword" type="text" placeholder="Votre mot de passe" required>
 			</p>
 
 			<button type="submit" name="loginButton">Connexion</button>
 
 		</form>
+
+		<form id="registerForm" action="register.php" method="POST">
+			<h2>Créer ton compte gratuitement</h2>
+			<p>
+				<label for="username">Pseudo</label>
+				<input id="username" name="username" type="text" placeholder="bartSimpson" required>
+			</p>
+			<p>
+				<label for="firstName">Prénom</label>
+				<input id="firstName" name="firstName" type="text" placeholder="Bart" required>
+			</p>
+			<p>
+				<label for="lastName">Nom</label>
+				<input id="lastName" name="lastName" type="text" placeholder="Simpson" required>
+			</p>
+			<p>
+				<label for="email">Email</label>
+				<input id="email" name="email" type="email" placeholder="bart@gmail.com" required>
+			</p>
+			<p>
+				<label for="email2">Confirmer email</label>
+				<input id="email2" name="email2" type="email" placeholder="bart@gmail.com" required>
+			</p>
+			<p>
+				<label for="password">Mot de passe</label>
+				<input id="password" name="password" type="password" placeholder="Votre mot de passe" required>
+			</p>
+			<p>
+				<label for="password2">Confirmer mot de passe</label>
+				<input id="password2" name="password2" type="password" placeholder="Votre mot de passe" required>
+			</p>
+
+			<button type="submit" name="registerButton">S'inscrire</button>
+
+		</form>
 	</div>
-	
+
 </body>
 </html>
