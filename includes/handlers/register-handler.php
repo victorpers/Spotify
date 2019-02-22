@@ -23,26 +23,6 @@ function santitizeFormPassword($inputText) {
 	$inputText = strip_tags($inputText);
 	return $inputText;
 }
-
-function validateUsername($un) {
-	//Check if username is valid
-}
-
-function validateFirstName($fn) {
-	//Check if first name is valid
-}
-
-function validateLastName($ln) {
-	//Check if last name is valid
-}
-
-function validateEmails($em, $em2) {
-	//Check if emails is valid
-}
-
-function validatePasswords($pw, $pw2) {
-	//Check if passwords is valid
-}
 	
 if (isset($_POST['registerButton'])) {
 	//Register button was pressed
@@ -57,11 +37,7 @@ if (isset($_POST['registerButton'])) {
 	$password = santitizeFormPassword($_POST['password']);
 	$password2 = santitizeFormPassword($_POST['password2']);
 
-	validateUsername($username);
-	validateFirstName($firstName);
-	validateLastName($lastNames);
-	validateEmails($email, $email2);
-	validatePasswords($password, $password2);
+	$account->register($username, $firstName, $lastName, $email, $email2, $password, $password2);
 }
 
 ?>
