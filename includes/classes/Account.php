@@ -24,15 +24,29 @@
 		}
 
 		private function validateFirstName($fn) {
-			//Check if first name is valid
+			if (strlen($fn) > 25 || strlen($fn) < 2) {
+				array_push($this->errorArray, "Ton nom doit contenir entre 2 et 25 caractères");
+				return;
+			}
 		}
 
 		private function validateLastName($ln) {
-			//Check if last name is valid
+			if (strlen($ln) > 25 || strlen($ln) < 2) {
+				array_push($this->errorArray, "Ton prénom doit contenir entre 2 et 25 caractères");
+				return;
+			}
 		}
 
 		private function validateEmails($em, $em2) {
-			//Check if emails is valid
+			if($em != $em2) {
+				array_push($this->errorArray, "Les emails ne correspondent pas");
+				return;
+			}
+			if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
+				array_push($this->errorArray, "Email invalide");
+				return;
+			}
+			//TODO: check if email hasn't already been used
 		}
 
 		private function validatePasswords($pw, $pw2) {
