@@ -50,7 +50,20 @@
 		}
 
 		private function validatePasswords($pw, $pw2) {
-			//Check if passwords is valid
+			if($pw != $pw2) {
+				array_push($this->errorArray, "Les mots de passes ne correspondent pas");
+				return;
+			}
+
+			if (preg_match('/[^A-Za-z0-9]/', $pw)) {
+				array_push($this->errorArray, "Votre mot de passe ne peut contenir que des chiffres et des lettres");
+				return;
+			}
+
+			if (strlen($pw) > 30 || strlen($pw) < 5) {
+				array_push($this->errorArray, "Votre mot de passe doit contenir entre 5 et 30 caractères");
+				return;
+			}
 		}
 	}
 ?>
