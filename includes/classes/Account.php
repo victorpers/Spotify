@@ -1,9 +1,11 @@
 <?php
 	class Account {
 
+		private $bdd;
 		private $errorArray;
 
-		public function __construct() {
+		public function __construct($bdd) {
+			$this->bdd = $bdd;
 			$this->errorArray = array();
 		}
 
@@ -16,7 +18,7 @@
 
 			if (empty($this->errorArray)) {
 				//Insert into DB
-				return true;
+				return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
 			}
 			else {
 				return false;
@@ -28,6 +30,25 @@
 				$error = "";
 			}
 			return "<span class='errorMessage'>$error</span>";
+		}
+
+		private function insertUserDetails($un, $fn, $ln, $em, $pw) {
+			$encryptedPw = md5($pw); //Password -> dzoak45adza54
+			$profilePic = "assets/images/profile-pics/head_emerald.png";
+			$date = date("Y-m-d");
+			$bdd = $this->bdd;
+
+			$result = $bdd->prepare("INSERT INTO users(username, firstName, lastName, email, password, signUpDate, profilePic) VALUES(:username, :firstName, :lastName, :email, :password, :signUpDate, :profilePic)");
+			$result->execute(array(
+				'username' => $un,
+				'firstName' => $fn,
+				'lastName' => $ln,
+				'email' => $em,
+				'password' => $pw,
+				'signUpDate' => $date,
+				'profilePic' => $profilePic
+			));
+			return $result;
 		}
 
 		private function validateUsername($un) {
