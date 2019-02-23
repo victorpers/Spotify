@@ -56,7 +56,14 @@
 				array_push($this->errorArray, Constants::$usernameCharacters);
 				return;
 			}
-			//TODO: check if username exists
+			$bdd = $this->bdd;
+			$checkUsernameQuery = $bdd->prepare("SELECT username FROM users WHERE username = :un");
+			$checkUsernameQuery->bindParam(':un', $un);
+			$checkUsernameQuery->execute();
+			if($checkUsernameQuery->rowCount() != 0) {
+				array_push($this->errorArray, Constants::$usernameTaken);
+				return;
+			}
 		}
 
 		private function validateFirstName($fn) {
@@ -82,7 +89,14 @@
 				array_push($this->errorArray, Constants::$emailInvalid);
 				return;
 			}
-			//TODO: check if email hasn't already been used
+			$bdd = $this->bdd;
+			$checkEmailQuery = $bdd->prepare("SELECT email FROM users WHERE email = :em");
+			$checkEmailQuery->bindParam(':em', $em);
+			$checkEmailQuery->execute();
+			if($checkEmailQuery->rowCount() != 0) {
+				array_push($this->errorArray, Constants::$emailTaken);
+				return;
+			}
 		}
 
 		private function validatePasswords($pw, $pw2) {
