@@ -9,6 +9,23 @@
 			$this->errorArray = array();
 		}
 
+		public function login($un, $pw) {
+			$pw = md5($pw);
+
+			$bdd = $this->bdd;
+			$query = $bdd->prepare("SELECT * FROM users WHERE username = :un AND password = :pw");
+			$query->bindParam(':un', $un);
+			$query->bindParam(':pw', $pw);
+			$query->execute();
+			if($query->rowCount() == 1) {
+				return true;
+			}
+			else {
+				array_push($this->errorArray, Constants::$loginFailed);
+				return false;
+			}
+		}
+
 		public function register($un, $fn, $ln, $em, $em2, $pw, $pw2) {
 			$this->validateUsername($un);
 			$this->validateFirstName($fn);
@@ -44,7 +61,7 @@
 				'firstName' => $fn,
 				'lastName' => $ln,
 				'email' => $em,
-				'password' => $pw,
+				'password' => $encryptedPw,
 				'signUpDate' => $date,
 				'profilePic' => $profilePic
 			));

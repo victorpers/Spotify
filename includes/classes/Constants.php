@@ -10,5 +10,8 @@ class Constants {
 	public static $usernameTaken = "Pseudo déjà utilisé";
 	public static $lastNameCharacters = "Ton nom doit contenir entre 2 et 25 caractères";
 	public static $firstNameCharacters = "Ton prénom doit contenir entre 2 et 25 caractères";
+
+
+	public static $loginFailed = "Votre pseudo ou mot de passe est incorrect";
 }
 ?>

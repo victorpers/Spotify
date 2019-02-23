@@ -26,12 +26,13 @@
 		<form id="loginForm" action="register.php" method="POST">
 			<h2>Se connecter à son compte</h2>
 			<p>
+				<?php echo $account->getError(Constants::$loginFailed); ?>
 				<label for="loginUsername">Pseudo</label>
 				<input id="loginUsername" name="loginUsername" type="text" placeholder="bartSimpson" required>
 			</p>
 			<p>
 				<label for="loginPassword">Mot de passe</label>
-				<input id="loginPassword" name="loginPassword" type="text" placeholder="Votre mot de passe" required>
+				<input id="loginPassword" name="loginPassword" type="password" placeholder="Votre mot de passe" required>
 			</p>
 
 			<button type="submit" name="loginButton">Connexion</button>
