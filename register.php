@@ -40,6 +40,10 @@
 
 					<button type="submit" name="loginButton">Connexion</button>
 
+                    <div class="hasAccountText">
+                        <span id="hideLogin">Vous n'avez pas encore de compte ?<br> Créer un compte ici.</span>
+                    </div>
+
 				</form>
 
 				<form id="registerForm" action="register.php" method="POST">
@@ -84,6 +88,10 @@
 					</p>
 
 					<button type="submit" name="registerButton">S'inscrire</button>
+
+                    <div class="hasAccountText">
+                        <span id="hideRegister">Vous avez déjà un compte ?<br> Connectez-vous ici.</span>
+                    </div>
 
 				</form>
 			</div>
